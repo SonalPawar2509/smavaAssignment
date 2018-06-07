@@ -15,13 +15,15 @@ public class LoginPage {
 	ConfigReader reader=new PropertyFileReader();
 	
 	WebDriver driver;
-	String actualErrorMessage="Ihre Angaben zum Einloggen sind ungültig. Bitte versuchen Sie es erneut. Bitte beachten Sie, dass Ihr Zugang bei 3 Fehlversuchen von uns vorläufig gesperrt wird.";
+	public String actualErrorMessage="Ihre Angaben zum Einloggen sind ungültig. Bitte versuchen Sie es erneut. Bitte beachten Sie, dass Ihr Zugang bei 3 Fehlversuchen von uns vorläufig gesperrt wird.";
 	
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-		
+	
+	
+	
 	@FindBy(xpath="//input[@id='signonForm.email']")
 	WebElement emailTxtBox;
 	
@@ -32,6 +34,7 @@ public class LoginPage {
 	WebElement anmeldenButton;
 	
 	@FindBy(xpath="//*[@id='layout-wrapper']/div[3]/div[1]/div/div/div[1]/div/ul/li")
+	public
 	WebElement loginErrorMessage;
 	
 	
@@ -46,9 +49,4 @@ public class LoginPage {
 	public void clickAnmeldenButton(){
 		anmeldenButton.click();
 	}
-	
-	public void verifyErrorMessage(){
-		 assertThat(actualErrorMessage,equalTo(loginErrorMessage.getText()));
-	}
-
 }

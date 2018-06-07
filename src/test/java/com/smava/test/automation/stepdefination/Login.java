@@ -1,5 +1,8 @@
 package com.smava.test.automation.stepdefination;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+
 import com.smava.test.automation.configuration.ConfigReader;
 import com.smava.test.automation.configuration.PropertyFileReader;
 import com.smava.test.automation.pageObject.HomePage;
@@ -41,7 +44,7 @@ public class Login {
 
 	@Then("^I should error message$")
 	public void i_should_error_message() throws Throwable {
-	    loginPage.verifyErrorMessage();
+		assertThat(loginPage.actualErrorMessage,equalTo(loginPage.loginErrorMessage.getText()));
 	}
 	
 }
